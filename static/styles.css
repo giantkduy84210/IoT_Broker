@@ -1,0 +1,203 @@
+:root {
+    --bg: #050a0f;
+    --panel: rgba(10, 18, 28, .75);
+    --line: rgba(0, 255, 200, .18);
+    --neon: #00ffc8;
+    --text: #d6f3ff;
+    --muted: #7a8b9a;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: system-ui, sans-serif;
+}
+
+/* layout */
+.layout {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    height: 100vh;
+}
+
+/* sidebar */
+.sidebar {
+    border-right: 1px solid var(--line);
+    background: var(--panel);
+    backdrop-filter: blur(12px);
+    padding: 14px;
+}
+
+/* topbar */
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+/* button CoreIoT */
+.coreiot-btn {
+    font-size: 11px;
+    color: var(--neon);
+    text-decoration: none;
+    border: 1px solid var(--line);
+    padding: 6px 10px;
+    border-radius: 8px;
+    transition: 0.2s;
+}
+
+.coreiot-btn:hover {
+    background: rgba(0, 255, 200, 0.1);
+}
+
+/* title */
+.title {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--neon);
+}
+
+/* device */
+.device {
+    padding: 10px;
+    margin-bottom: 8px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.device:hover {
+    background: rgba(0, 255, 200, 0.08);
+}
+
+.device.active {
+    background: rgba(0, 255, 200, 0.15);
+}
+
+/* main */
+.main {
+    padding: 14px;
+    display: grid;
+    grid-template-rows: 9fr 8fr;
+    gap: 12px;
+}
+
+.panel {
+    border: 1px solid var(--line);
+    background: var(--panel);
+    border-radius: 14px;
+    padding: 12px;
+    overflow: auto;
+}
+
+/* 🔥 CARD TELEMETRY */
+.card {
+    border: 1px solid rgba(0, 255, 200, 0.12);
+    border-radius: 12px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background: rgba(0, 0, 0, 0.25);
+}
+
+/* key-value layout */
+.kv {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    font-size: 12px;
+    font-family: monospace;
+}
+
+/* highlight values */
+.val-hot {
+    color: #ff5b6f;
+}
+
+.val-good {
+    color: #00ffc8;
+}
+
+.val-mid {
+    color: #ffcc66;
+}
+
+/* device list */
+.device {
+    padding: 10px;
+    margin-bottom: 8px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.signal {
+    display: flex;
+    gap: 2px;
+    align-items: flex-end;
+    height: 12px;
+}
+
+/* từng cột sóng */
+.signal span {
+    width: 3px;
+    background: #00ffc8;
+    border-radius: 2px;
+    opacity: 0.4;
+}
+
+/* level từng bar */
+.signal span:nth-child(1) {
+    height: 4px;
+}
+
+.signal span:nth-child(2) {
+    height: 8px;
+}
+
+.signal span:nth-child(3) {
+    height: 12px;
+}
+
+/* animation khi ONLINE */
+.signal.online span {
+    animation: wave 1s infinite ease-in-out;
+}
+
+.signal.online span:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.signal.online span:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+@keyframes wave {
+    0% {
+        opacity: 0.3;
+        transform: scaleY(0.7);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scaleY(1.2);
+    }
+
+    100% {
+        opacity: 0.3;
+        transform: scaleY(0.7);
+    }
+}
+
+/* OFFLINE */
+.signal.offline span {
+    background: #ff4d4d;
+    opacity: 0.2;
+    animation: none;
+}

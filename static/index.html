@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>IoT Broker Dashboard</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+
+<body>
+
+    <div class="layout">
+
+        <aside class="sidebar">
+
+            <div class="topbar">
+                <div class="title">DEVICES</div>
+
+                <!-- 🔥 BUTTON COREIOT -->
+                <a class="coreiot-btn" href="https://app.coreiot.io/" target="_blank">
+                    CoreIoT ↗
+                </a>
+            </div>
+
+            <div id="deviceList"></div>
+        </aside>
+
+        <main class="main">
+
+            <section class="panel">
+                <div class="title">DEVICE STREAM</div>
+                <div style="height:20px;"></div>
+                <div id="stream"></div>
+            </section>
+
+            <section class="panel">
+                <div class="title">RPC EVENTS</div>
+                <div style="height:20px;"></div>
+                <div id="rpc"></div>
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="/static/script.js"></script>
+
+</body>
+
+</html>
