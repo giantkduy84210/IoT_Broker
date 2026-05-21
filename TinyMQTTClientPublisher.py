@@ -3,8 +3,8 @@ import time
 import threading
 import json
 
-device_id = "ESP32_001"
-broker_address = "192.168.1.4"
+device_id = "ESP32_002"
+broker_address = "172.20.10.2"
 
 connected = threading.Event()
 

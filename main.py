@@ -2,6 +2,7 @@ import threading
 import time
 import json
 import paho.mqtt.client as mqtt
+import socket
 
 from fastapi import FastAPI
 from fastapi.responses import FileResponse
@@ -13,6 +14,20 @@ import asyncio
 import uvicorn
 
 from mqtt_state import mqtt_messages, connected_devices, device_last_seen, device_status, OFFLINE_THRESHOLD
+
+def get_local_ip():
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+
+    try:
+        # không cần thật sự connect được
+        s.connect(("8.8.8.8", 80))
+        ip = s.getsockname()[0]
+    except:
+        ip = "127.0.0.1"
+    finally:
+        s.close()
+
+    return ip
 
 # =========================
 # CONFIG
@@ -214,6 +229,12 @@ def start_mqtt():
 # WEB
 # =========================
 def start_web():
+    ip = get_local_ip()
+
+    print(f"Web dashboard running:")
+    print(f"Local:    127.0.0.1")
+    print(f"On LAN:   {ip}")
+
     uvicorn.run(app, host="0.0.0.0", port=8000)
 
 # =========================
